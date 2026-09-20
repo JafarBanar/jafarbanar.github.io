@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jafar Banar</title>
+<meta name="description" content="Jafar Banar, senior data and AI engineer in Gothenburg and PhD candidate at Chalmers, working on LLM and RAG systems, automotive test data, and distributed 5G/6G and radar synchronization.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --panel:#f7f8fa; --text:#171d23; --muted:#5b6670; --line:#e3e6ea;
+  --accent:#1f5f9e; --accent2:#0d8f8f; --accent-soft:#e8f0f8; --tag:#eef1f4;
+  --hero-1:#0f2f4f; --hero-2:#123f5e; --hero-3:#0c5c5c; --on-hero:#eaf2f8;
+  --shadow:0 1px 2px rgba(16,24,32,.06), 0 8px 24px rgba(16,24,32,.06);
+  --shadow-lg:0 2px 6px rgba(16,24,32,.08), 0 18px 40px rgba(16,24,32,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11161b; --panel:#181e25; --text:#e6e9ec; --muted:#9aa5b0; --line:#28303a;
+    --accent:#6fb0e8; --accent2:#3fc7c0; --accent-soft:#17283a; --tag:#212932;
+    --hero-1:#0a1a28; --hero-2:#0d2a3f; --hero-3:#083b3b; --on-hero:#e8f1f7;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg:0 2px 6px rgba(0,0,0,.45), 0 18px 40px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11161b; --panel:#181e25; --text:#e6e9ec; --muted:#9aa5b0; --line:#28303a;
+  --accent:#6fb0e8; --accent2:#3fc7c0; --accent-soft:#17283a; --tag:#212932;
+  --hero-1:#0a1a28; --hero-2:#0d2a3f; --hero-3:#083b3b; --on-hero:#e8f1f7;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  --shadow-lg:0 2px 6px rgba(0,0,0,.45), 0 18px 40px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 "Source Sans 3",system-ui,-apple-system,sans-serif;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.shell{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ---------- sticky nav ---------- */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1120px;margin:0 auto;padding:11px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.top .brand{font:700 17px "Source Serif 4",serif;color:var(--text);margin-right:auto;display:flex;align-items:center;gap:9px}
+.top .brand .dot{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.top nav{display:flex;gap:15px;flex-wrap:wrap;font-size:15px}
+.top nav a{color:var(--muted);padding:2px 0;border-bottom:2px solid transparent}
+.top nav a:hover{color:var(--accent);text-decoration:none}
+.top nav a.on{color:var(--text);border-bottom-color:var(--accent)}
+#theme{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:7px;padding:4px 10px;cursor:pointer;font-size:14px}
+#theme:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hero-1) 0%,var(--hero-2) 55%,var(--hero-3) 100%);color:var(--on-hero)}
+.hero .art{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.hero .in{position:relative;max-width:1120px;margin:0 auto;padding:46px 20px 40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:34px;align-items:center}
+.hero img.photo{width:172px;height:172px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.22);box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.hero h1{font:700 40px/1.1 "Source Serif 4",serif;margin:0 0 6px;letter-spacing:-.4px}
+.hero .role{font-size:19px;color:#bcd6e8;margin:0 0 14px}
+.hero .tagline{font-size:17px;max-width:62ch;color:#dbe8f2;margin:0 0 20px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px;color:#c6dbea;margin:0 0 20px}
+.hero .facts span{display:inline-flex;align-items:center;gap:7px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:8px;font-weight:600;font-size:15px;border:1px solid rgba(255,255,255,.3);color:var(--on-hero)}
+.btn:hover{text-decoration:none;background:rgba(255,255,255,.12)}
+.btn.primary{background:#fff;color:#0f2f4f;border-color:#fff}
+.btn.primary:hover{background:#e9f1f7}
+
+/* ---------- stats strip ---------- */
+.stats{background:var(--panel);border-bottom:1px solid var(--line)}
+.stats .in{max-width:1120px;margin:0 auto;padding:18px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.stats .n{font:700 26px "Source Serif 4",serif;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2}
+.stats .l{font-size:14px;color:var(--muted)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1120px;margin:0 auto;padding:34px 20px 60px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:44px}
+main{min-width:0}
+aside{position:sticky;top:76px;align-self:start}
+.sidecard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+.sidecard h4{margin:0 0 10px;font:700 13px "Source Sans 3",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sidecard ul{list-style:none;padding:0;margin:0;font-size:15px}
+.sidecard li{margin:7px 0;display:flex;gap:9px;align-items:center}
+.sidecard li span.i{width:17px;text-align:center;color:var(--muted);flex:none}
+.cvbtn{display:flex;justify-content:center;gap:8px;margin-top:14px;padding:9px 14px;border-radius:8px;font-weight:600;font-size:15px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.cvbtn:hover{text-decoration:none;filter:brightness(1.08)}
+
+section{margin-bottom:46px;scroll-margin-top:78px}
+h2{font:700 25px "Source Serif 4",serif;margin:0 0 16px;display:flex;align-items:center;gap:11px}
+h2 .ic{width:30px;height:30px;flex:none;border-radius:8px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+h2 .ic svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+h3{font-size:17.5px;margin:0}
+.lead{font-size:19px;line-height:1.55;border-left:3px solid;border-image:linear-gradient(180deg,var(--accent),var(--accent2)) 1;padding-left:16px;margin:0 0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.chip{background:var(--tag);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:14px;color:var(--muted)}
+
+/* ---------- news ---------- */
+.news{list-style:none;padding:0;margin:0}
+.news li{display:flex;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.news li:last-child{border-bottom:0}
+.news b{flex:none;min-width:84px;font-size:13.5px;font-weight:700;color:var(--accent2);letter-spacing:.03em;padding-top:3px}
+
+/* ---------- timeline ---------- */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent2),transparent)}
+.item{position:relative;padding:12px 0 16px}
+.item::before{content:"";position:absolute;left:-26px;top:19px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2.5px solid var(--accent)}
+.item.now::before{background:var(--accent2);border-color:var(--accent2);box-shadow:0 0 0 4px color-mix(in srgb, var(--accent2) 22%, transparent)}
+.meta{color:var(--muted);font-size:15px;margin-top:2px}
+.item p,.item ul{margin:7px 0 0}
+.item ul{padding-left:20px}
+
+/* ---------- cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px 14px;overflow:hidden;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb, var(--accent) 45%, var(--line))}
+.card .hd{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.card .hd .ci{width:28px;height:28px;flex:none;border-radius:7px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.card .hd .ci svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.card h3 a{color:var(--text)}
+.card p{margin:4px 0 8px;font-size:15.5px}
+
+/* ---------- research callout ---------- */
+.callout{position:relative;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:10px;padding:16px 18px;margin-bottom:14px;overflow:hidden}
+.callout .wave{position:absolute;right:-10px;top:-10px;width:170px;height:120px;opacity:.16;pointer-events:none}
+.rlist{margin:0;padding-left:20px}
+.rlist li{margin:7px 0}
+
+/* ---------- publications ---------- */
+.pubs{padding-left:22px}
+.pubs li{margin:10px 0}
+.pubs .venue{color:var(--muted);font-size:15.5px}
+.me{font-weight:700}
+
+footer{position:relative;color:var(--muted);font-size:14.5px;text-align:center;padding:22px 20px 28px;border-top:1px solid var(--line)}
+footer .fl{display:flex;gap:16px;justify-content:center;margin-bottom:8px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .hero .in{grid-template-columns:minmax(0,1fr);text-align:center;justify-items:center;padding:34px 20px 32px;gap:20px}
+  .hero h1{font-size:33px}
+  .hero .facts,.btns{justify-content:center}
+  .hero .tagline{font-size:16px}
+  .stats .in{grid-template-columns:repeat(2,1fr);gap:14px}
+  .wrap{grid-template-columns:minmax(0,1fr);gap:26px;padding:24px 16px 48px}
+  .top{position:static}
+  .top nav{font-size:14px;gap:12px}
+  aside{position:static}
+  .grid{grid-template-columns:1fr}
+  .news li{flex-direction:column;gap:2px}
+  .news b{min-width:0}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+  <a class="brand" href="#top"><span class="dot"></span>Jafar Banar</a>
+  <nav>
+    <a href="#about">About</a><a href="#news">News</a><a href="#experience">Experience</a>
+    <a href="#projects">Projects</a><a href="#research">Research</a><a href="#publications">Publications</a>
+    <a href="#supervision">Supervision</a><a href="#education">Education</a>
+  </nav>
+  <button id="theme" aria-label="Toggle dark mode">◐</button>
+</div></header>
+
+<section class="hero" id="top">
+  <svg class="art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#7fd3ff" stop-opacity=".55"/>
+        <stop offset="100%" stop-color="#3fe0cf" stop-opacity=".15"/>
+      </linearGradient>
+      <radialGradient id="g2"><stop offset="0%" stop-color="#6fe6d8" stop-opacity=".45"/><stop offset="100%" stop-color="#6fe6d8" stop-opacity="0"/></radialGradient>
+    </defs>
+    <!-- radar sweep rings -->
+    <g fill="none" stroke="url(#g1)" stroke-width="1.1">
+      <circle cx="1010" cy="210" r="60"/><circle cx="1010" cy="210" r="115"/>
+      <circle cx="1010" cy="210" r="170"/><circle cx="1010" cy="210" r="225"/>
+      <line x1="1010" y1="210" x2="1010" y2="-20"/><line x1="1010" y1="210" x2="1240" y2="210"/>
+      <line x1="1010" y1="210" x2="1010" y2="440"/><line x1="1010" y1="210" x2="780" y2="210"/>
+      <path d="M1010 210 L1170 50 A226 226 0 0 1 1236 210 Z" fill="url(#g2)" stroke="none"/>
+    </g>
+    <!-- distributed array nodes -->
+    <g fill="#8fe3d8" opacity=".55">
+      <circle cx="120" cy="90" r="3.5"/><circle cx="250" cy="150" r="3.5"/><circle cx="180" cy="270" r="3.5"/>
+      <circle cx="330" cy="330" r="3.5"/><circle cx="430" cy="120" r="3.5"/><circle cx="560" cy="250" r="3.5"/>
+      <circle cx="690" cy="110" r="3.5"/><circle cx="640" cy="350" r="3.5"/>
+    </g>
+    <g stroke="#7fd3ff" stroke-width=".7" opacity=".3" fill="none">
+      <path d="M120 90 L250 150 L180 270 L330 330 L560 250 L430 120 L120 90"/>
+      <path d="M430 120 L690 110 L560 250 L640 350 L330 330"/>
+    </g>
+    <!-- waveform -->
+    <path d="M0 380 Q 60 330 120 380 T 240 380 T 360 380 T 480 380 T 600 380 T 720 380"
+          fill="none" stroke="#7fd3ff" stroke-width="1.6" opacity=".35"/>
+    <path d="M0 400 Q 45 365 90 400 T 180 400 T 270 400 T 360 400 T 450 400 T 540 400"
+          fill="none" stroke="#3fe0cf" stroke-width="1.3" opacity=".3"/>
+  </svg>
+
+  <div class="in">
+    <img class="photo" src="files/photo.jpg" alt="Jafar Banar" width="172" height="172">
+    <div>
+      <h1>Jafar Banar</h1>
+      <p class="role">Senior Data &amp; AI Engineer · PhD candidate, Telecom &amp; Radar (Chalmers)</p>
+      <p class="tagline">I build data and AI systems that are measured, validated and traceable, from LLM and RAG platforms to automotive test-data pipelines and radar signal processing.</p>
+      <div class="facts">
+        <span>📍 Gothenburg, Sweden</span>
+        <span>🎓 PhD defence February 2027</span>
+        <span>🛂 Swedish permanent residence</span>
+      </div>
+      <div class="btns">
+        <a class="btn primary" href="files/JafarBanar_CV.pdf">⬇ Download CV</a>
+        <a class="btn" href="mailto:jaafar.banar@gmail.com">✉ Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/jafarbanar">in LinkedIn</a>
+        <a class="btn" href="https://github.com/JafarBanar">⌘ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats"><div class="in">
+  <div><div class="n">10+</div><div class="l">years in engineering</div></div>
+  <div><div class="n">5</div><div class="l">peer-reviewed papers</div></div>
+  <div><div class="n">10+</div><div class="l">thesis students supervised</div></div>
+  <div><div class="n">3rd</div><div class="l">IEEE ISIT 2025 challenge</div></div>
+</div></div>
+
+<div class="wrap">
+<aside>
+  <div class="sidecard">
+    <h4>Contact</h4>
+    <ul>
+      <li><span class="i">📍</span>Gothenburg, Sweden</li>
+      <li><span class="i">✉️</span><a href="mailto:jaafar.banar@gmail.com">jaafar.banar@gmail.com</a></li>
+      <li><span class="i">in</span><a href="https://www.linkedin.com/in/jafarbanar">LinkedIn</a></li>
+      <li><span class="i">⌘</span><a href="https://github.com/JafarBanar">GitHub</a></li>
+      <li><span class="i">📦</span><a href="https://pypi.org/project/groundcite/">PyPI · groundcite</a></li>
+      <li><span class="i">🏢</span><a href="https://aiopt.se">AIOpt</a></li>
+    </ul>
+    <a class="cvbtn" href="files/JafarBanar_CV.pdf">Download CV</a>
+  </div>
+</aside>
+
+<main>
+<section id="about">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span>About me</h2>
+  <p class="lead">I care about systems that are measured, validated and traceable, whether that is a data pipeline, an LLM answer or a radar detection.</p>
+  <p>I am a Senior Data Engineer consultant at Sigma Embedded Engineering, most recently on assignment at Volvo Cars, and a dual-degree PhD candidate at Chalmers University of Technology and Eindhoven University of Technology as a Marie Skłodowska-Curie fellow in the EU MyWave network. My thesis is on synchronization and calibration for distributed massive MIMO and coherent distributed radar, with the defence planned for February 2027.</p>
+  <p>Before that I optimized an on-premises LLM and RAG platform at QRTech, fixed a radar velocity bug in production perception code on an assignment at Einride, and worked on coherent automotive radar during a visiting placement at NXP. Earlier I optimized live 2G/3G/4G networks and did research and simulation studies on 5G and IoT. I also founded AIOpt, a small company building AI for telecom network operations.</p>
+  <div class="chips">
+    <span class="chip">LLM / RAG</span><span class="chip">Agentic systems</span><span class="chip">LLM evaluation</span>
+    <span class="chip">Python · SQL · Go · C++</span><span class="chip">Azure · Kubernetes · CI/CD</span>
+    <span class="chip">Automotive data</span><span class="chip">Radar &amp; perception</span>
+    <span class="chip">5G/6G · distributed MIMO</span><span class="chip">Synchronization</span>
+  </div>
+</section>
+
+<section id="news">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>News</h2>
+  <ul class="news">
+    <li><b>Sep 2026</b><span>Published <a href="https://pypi.org/project/groundcite/">groundcite</a> on PyPI, a small library that checks an LLM answer cites only the sources it was given.</span></li>
+    <li><b>2026</b><span>Fine-tuned Qwen2.5-7B with LoRA on Chalmers Alvis A100 GPUs for telecom root-cause classification (66.7% vs a 40.0% baseline).</span></li>
+    <li><b>Jun 2025</b><span>3rd place in the IEEE ISIT 2025 "Wireless Wanderlust" machine learning challenge.</span></li>
+    <li><b>2024</b><span>Presented clock-drift synchronization for coherent distributed radars at IEEE ISPCS, Tokyo.</span></li>
+    <li><b>Jul 2024</b><span>Oxford Machine Learning Summer School (OxML 2024), organised by AI for Global Goals, and the BSE summer school on large language models.</span></li>
+  </ul>
+</section>
+
+<section id="experience">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 8h18v12H3z"/><path d="M9 8V5h6v3"/></svg></span>Experience</h2>
+  <div class="tl">
+  <div class="item now">
+    <h3>Senior Data Engineer (Consultant) · Sigma Embedded Engineering Yora AB</h3>
+    <div class="meta">May 2026 – present · Gothenburg</div>
+    <p>Assignment at Volvo Cars, Test Lab Data team (May–Sep 2026). Python and SQL pipelines on Azure and AKS for measurement data from engine, electric motor, HIL rig and battery tests. Made data synchronization deterministic, onboarded a new dSpace HIL rig, and replaced a hard delete with a reversible, quarantine-first cleanup rolled out through QA.</p>
+  </div>
+  <div class="item">
+    <h3>Senior Development Engineer (AI Engineer) · QRTech AB</h3>
+    <div class="meta">Feb 2025 – Jul 2026 · Gothenburg</div>
+    <p>Optimized an on-premises LLM and RAG platform (response time 5–8 s to 2–4 s, memory 12 GB to 8 GB). Co-developed an AI test-specification generator, built document anonymization with Microsoft Presidio and wrote the requirements, interface control document and verification plan for an autonomous robot MVP.</p>
+    <p>Assignment at Einride, perception (Sep–Dec 2025). Found and fixed a radar speed bug in production Go perception code, validated on 22 scenarios and about 360k radar clusters before merge.</p>
+  </div>
+  <div class="item now">
+    <h3>Founder, CEO &amp; AI Engineer · AIOpt AB</h3>
+    <div class="meta">Jul 2024 – present · part-time</div>
+    <p>Safety and evidence for AI-driven changes to mobile networks: a seven-gate deterministic decision engine that approves, escalates or refuses each proposed change, validated against the 3GPP TS 28.532 interface and run on a lab 5G testbed with a real gNB and core, plus a tamper-evident Ed25519 evidence format with an open-source offline verifier. KPI forecasting, anomaly detection and LoRA-tuned root-cause analysis. Almi verification funding, EUIPO SME Fund IP grants, and a patent novelty search through Chalmers Innovation Office. No production deployment yet.</p>
+  </div>
+  <div class="item">
+    <h3>Doctoral Researcher &amp; Project Assistant · Chalmers University of Technology</h3>
+    <div class="meta">Jul 2020 – Jan 2025 · Gothenburg</div>
+    <p>Synchronization and calibration for distributed massive MIMO and coherent distributed radar, MATLAB/Python simulation frameworks and USRP experiments.</p>
+  </div>
+  <div class="item">
+    <h3>Visiting Researcher, Automotive Radar (PhD secondment) · NXP Semiconductors</h3>
+    <div class="meta">Jun 2021 – Nov 2022 · Eindhoven · placement from Chalmers (MyWave)</div>
+    <p>Synchronization and signal processing for coherent distributed automotive radar, prepared for embedded deployment with hardware and software teams.</p>
+  </div>
+  <div class="item">
+    <h3>Earlier · telecom engineering and research, Tehran</h3>
+    <div class="meta">2016 – 2020</div>
+    <p>RF optimization of live 2G/3G/4G networks with Ericsson tools at AEC - RavanErtebat, and research and simulation studies on 5G, IoT, big data and cloud computing at the ICT Research Institute.</p>
+  </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span>Selected projects</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="hd"><span class="ci"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span>
+        <h3><a href="https://github.com/JafarBanar/spec-assistant-3gpp">3GPP spec assistant</a></h3></div>
+      <p>Citation-grounded retrieval over 5G NR specifications with a from-scratch BM25 index and validation that rejects fabricated clause references. MRR 0.957 on a labelled set.</p>
+      <div class="chips"><span class="chip">RAG</span><span class="chip">BM25</span><span class="chip">Python</span></div></div>
+    <div class="card">
+      <div class="hd"><span class="ci"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span>
+        <h3><a href="https://github.com/JafarBanar/groundcite">groundcite</a></h3></div>
+      <p>Zero-dependency library and CLI that verifies an LLM answer cites only supplied sources and fails CI when it does not. Published on PyPI.</p>
+      <div class="chips"><span class="chip">LLM evaluation</span><span class="chip">CI</span></div></div>
+    <div class="card">
+      <div class="hd"><span class="ci"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="18" cy="17" r="2.5"/></svg></span>
+        <h3><a href="https://github.com/JafarBanar/mini-ai-deploy-pipeline">Edge deployment pipeline</a></h3></div>
+      <p>PyTorch to ONNX with parity checks, INT8 and FP16 quantization, p95 latency benchmarking and CI gates on accuracy and latency.</p>
+      <div class="chips"><span class="chip">ONNX</span><span class="chip">Quantization</span><span class="chip">ARM64</span></div></div>
+    <div class="card">
+      <div class="hd"><span class="ci"><svg viewBox="0 0 24 24"><path d="M3 18c3-9 6-9 9 0s6 9 9 0"/></svg></span>
+        <h3><a href="https://github.com/JafarBanar/ISIT2025-Wireless-Wanderlust">ISIT 2025 Wireless Wanderlust</a></h3></div>
+      <p>CNN and CNN-LSTM models in TensorFlow/Keras on massive-MIMO CSI for localization and grant-free transmission. 3rd place.</p>
+      <div class="chips"><span class="chip">Deep learning</span><span class="chip">MIMO</span></div></div>
+    <div class="card">
+      <div class="hd"><span class="ci"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 10h6M9 14h4"/></svg></span>
+        <h3>AI agents</h3></div>
+      <p><a href="https://github.com/JafarBanar/email-triage-agent">Inbox triage</a>, <a href="https://github.com/JafarBanar/document-pipeline-agent">invoice extraction</a> and <a href="https://github.com/JafarBanar/watchtower-agent">uptime monitoring</a> agents with schema-validated output and rule-based fallbacks.</p>
+      <div class="chips"><span class="chip">Agents</span><span class="chip">Structured output</span></div></div>
+    <div class="card">
+      <div class="hd"><span class="ci"><svg viewBox="0 0 24 24"><path d="M3 17h4l2-9 3 13 2-7h7"/></svg></span>
+        <h3><a href="https://github.com/JafarBanar/vehicle-motion-estimation">Vehicle motion estimation</a></h3></div>
+      <p>Kalman-filter motion estimation in C with CAN output and faulty-sensor fallback.</p>
+      <div class="chips"><span class="chip">Kalman filter</span><span class="chip">CAN</span><span class="chip">C</span></div></div>
+  </div>
+</section>
+
+<section id="research">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg></span>Research</h2>
+  <div class="callout">
+    <svg class="wave" viewBox="0 0 200 140" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" opacity=".9">
+        <circle cx="150" cy="70" r="22"/><circle cx="150" cy="70" r="44"/><circle cx="150" cy="70" r="66"/>
+        <path d="M0 110 Q 25 80 50 110 T 100 110 T 150 110"/>
+      </g>
+    </svg>
+    <p style="margin:0">My PhD (MyWave ESR 14, supervisors Thomas Eriksson, Alessio Filippi and Alex Alvarado) studies how to keep distributed antennas and radars coherent when each unit has its own free-running oscillator.</p>
+  </div>
+  <ul class="rlist">
+    <li>Closed-form spectral efficiency for distributed massive MIMO under access-point phase noise with MMSE channel estimation.</li>
+    <li>UC-Sync, user-assisted over-the-air phase alignment for user-centric distributed massive MIMO, raising 5th-percentile spectral efficiency by 85% over the unsynchronized baseline.</li>
+    <li>Alamouti-coded distributed zero-forcing that needs no inter-AP phase synchronization.</li>
+    <li>Cramér–Rao bounds and a staged estimator for joint delay, clock-skew and carrier-phase synchronization.</li>
+    <li>Maximum-likelihood clock-drift estimation for bistatic FMCW radar at 78 GHz, started during the NXP placement.</li>
+  </ul>
+</section>
+
+<section id="publications">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h9l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2z"/><path d="M15 3v5h5"/></svg></span>Publications</h2>
+  <ol class="pubs">
+    <li><span class="me">J. Banar</span> and T. Eriksson, "Clock Drift Synchronization in Coherent Distributed Radars," <span class="venue">IEEE ISPCS, Tokyo, 2024.</span></li>
+    <li><span class="me">J. Banar</span> and T. Eriksson, "Effect of Phase-Noise on the Distributed Massive MIMO Networks," <span class="venue">European Microwave Conference (EuMC), pp. 700–703, 2022.</span></li>
+    <li>E. Meyer et al. (incl. <span class="me">J. Banar</span>), "The state of the art in beyond 5G distributed massive MIMO communication system solutions," <span class="venue">Open Research Europe, 2:106, 2022.</span></li>
+    <li><span class="me">J. Banar</span> and S. M. Razavizadeh, "Resource allocation and relay selection in full-duplex cooperative OFDMA networks," <span class="venue">Computers &amp; Electrical Engineering, vol. 61, pp. 223–234, 2017.</span></li>
+    <li><span class="me">J. Banar</span> and S. M. Razavizadeh, "On the Uplink Spectral Efficiency of Full-Duplex Cooperative OFDMA Systems," <span class="venue">International Symposium on Telecommunications (IST), 2016.</span></li>
+  </ol>
+  <p class="meta">In preparation: UC-Sync (IEEE TWC), Alamouti-coded distributed zero-forcing, joint delay, clock-skew and carrier-phase synchronization, and a journal version of the distributed radar work.</p>
+</section>
+
+<section id="supervision">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 4l9 5-9 5-9-5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></span>Supervision &amp; service</h2>
+  <ul class="rlist">
+    <li>Supervised 10+ thesis students at Chalmers (7 MSc theses, 2 bachelor projects) with partners including Ericsson, Qamcom and KTH.</li>
+    <li>Technical Program Committee member, IEEE WCNC 2024–2026 and IEEE ISAC 2026.</li>
+    <li>Executive Board Member, IEEE Sweden VT/COM/IT Joint Chapter, 2021–2023.</li>
+  </ul>
+</section>
+
+<section id="education">
+  <h2><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 4l9 5-9 5-9-5z"/><path d="M21 9v6"/></svg></span>Education</h2>
+  <div class="tl">
+    <div class="item"><h3>PhD, Electrical Engineering (dual degree)</h3><div class="meta">Chalmers University of Technology &amp; Eindhoven University of Technology · 2020 – 2027 (expected)</div></div>
+    <div class="item"><h3>MSc, Electrical Engineering (Telecommunications)</h3><div class="meta">Iran University of Science and Technology · 2014 – 2016</div></div>
+    <div class="item"><h3>BSc, Electrical Engineering</h3><div class="meta">Amirkabir University of Technology · 2009 – 2014</div></div>
+  </div>
+  <p class="meta">Training: OxML 2024 (Oxford Machine Learning Summer School) and MLx Fundamentals 2024, both organised by AI for Global Goals; BSE Harnessing Language Models; Chalmers Applied Project Management.</p>
+</section>
+</main>
+</div>
+
+<footer>
+  <div class="fl">
+    <a href="mailto:jaafar.banar@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/jafarbanar">LinkedIn</a>
+    <a href="https://github.com/JafarBanar">GitHub</a>
+    <a href="files/JafarBanar_CV.pdf">CV</a>
+  </div>
+  © 2026 Jafar Banar · Gothenburg
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('theme'),r=document.documentElement;
+  try{var s=localStorage.getItem('theme');if(s)r.setAttribute('data-theme',s);}catch(e){}
+  b.addEventListener('click',function(){
+    var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n);}catch(e){}
+  });
+  // highlight the section currently in view
+  var links=[].slice.call(document.querySelectorAll('.top nav a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var a=map[e.target.id];if(!a)return;
+        if(e.isIntersecting){links.forEach(function(x){x.classList.remove('on');});a.classList.add('on');}
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('main section').forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
+</body>
+</html>
